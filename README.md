@@ -1,8 +1,28 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# EQL - Technical Challenge
 
-Currently, two official plugins are available:
+A registration and quiz/trivia game with Local Storage. The application allows users to register, do the quiz in a chat format and see the scoring on the end.
+## Authors
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [@katrionacoder](https://github.com/katrionacoder)
+
+
+## Support
+
+For support, email kat@katrionacoder.co.uk.
+
+
+## Tech Stack
+
+**Client:** Javascript, React, Material UI
+
+**Server:** Node
+
+
+## Features
+
+- Registration page
+- Chat style quiz
+- Score UI / Result
+- Retry quiz
+
