@@ -13,18 +13,25 @@ import LockIcon from "@mui/icons-material/Lock";
 import { pink } from "@mui/material/colors";
 import PropTypes from "prop-types";
 
+
+// Registration form
 const Registration = ({ onRegister }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
 
+  // Handler for form submission
   const handleSubmit = (e) => {
     e.preventDefault();
+    // Created a user data object from form inputs
     const userData = { firstName, lastName, email };
+    // Saves user data to local storage in JSON format
     localStorage.setItem("user", JSON.stringify(userData));
+    // Calls the onRegister callback - notifies parent component of successful registration
     onRegister();
   };
 
+  // Render the UI for the registration form
   return (
     <Container
       maxWidth={false}
@@ -48,12 +55,15 @@ const Registration = ({ onRegister }) => {
           textAlign: "center",
         }}
       >
+        {/*Display an avatar icon at the top of the form*/}
         <Avatar sx={{ bgcolor: pink[500], margin: "0 auto", mb: 2 }}>
           <PersonIcon />
         </Avatar>
         <Typography variant="h4" align="center" gutterBottom>
           Register
         </Typography>
+
+        {/* Form starts here */}
         <form onSubmit={handleSubmit}>
           <TextField
             label="First Name"
@@ -119,6 +129,7 @@ const Registration = ({ onRegister }) => {
   );
 };
 
+// PropTypes validation for component props
 Registration.propTypes = {
   onRegister: PropTypes.func.isRequired,
 };

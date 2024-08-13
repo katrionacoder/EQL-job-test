@@ -2,7 +2,9 @@ import { Container, Typography, Paper, Box, Button } from "@mui/material";
 import { pink } from "@mui/material/colors";
 import PropTypes from "prop-types";
 
+// Quiz results
 const Result = ({ answers }) => {
+  // Calculate the total score by counting the number of correct answers
   const score = answers.filter((answer) => answer.isCorrect).length;
 
   return (
@@ -33,6 +35,7 @@ const Result = ({ answers }) => {
         </Typography>
         <Typography variant="h6" align="center" sx={{ mb: 2 }}>
           You scored: {score} / {answers.length}
+          {/* Display the user's score out of the total number of questions */}
         </Typography>
         {answers.map((answer, index) => (
           <Typography key={index} paragraph>
@@ -42,6 +45,7 @@ const Result = ({ answers }) => {
             <br />
             <strong>Result:</strong>{" "}
             {answer.isCorrect ? "Correct" : "Incorrect"}
+            {/* Display the details of each question, the user's answer, and whether it was correct */}
           </Typography>
         ))}
         <Box textAlign="center" sx={{ mt: 2 }}>
@@ -58,6 +62,7 @@ const Result = ({ answers }) => {
   );
 };
 
+// PropTypes to ensure correct data type for 'answers' prop
 Result.propTypes = {
   answers: PropTypes.arrayOf(
     PropTypes.shape({

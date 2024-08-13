@@ -1,4 +1,3 @@
-// import React from 'react'
 import { useState } from "react";
 import {
   TextField,
@@ -11,6 +10,7 @@ import {
 import { pink } from "@mui/material/colors";
 import PropTypes from "prop-types";
 
+// Quiz questions and answers
 const questions = [
   { question: "What's the capital of France?", answer: "Paris" },
   { question: "What's 2 + 2?", answer: "4" },
@@ -19,11 +19,13 @@ const questions = [
   { question: "What is the largest mammal?", answer: "Blue whale" },
 ];
 
+// Component & state
 const Quiz = ({ onFinish }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [userAnswers, setUserAnswers] = useState([]);
   const [userInput, setUserInput] = useState("");
 
+  // Update the list of user answers with the new answer
   const handleAnswer = () => {
     const isCorrect =
       userInput.trim().toLowerCase() ===
@@ -36,12 +38,16 @@ const Quiz = ({ onFinish }) => {
         isCorrect: isCorrect,
       },
     ];
+
+    // Save the updated answers to the state
     setUserAnswers(updatedAnswers);
+    // Clear the user input field
     setUserInput("");
-    // const updatedAnswers = [...userAnswers, userInput];
+    // Check if there are more questions to display
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     } else {
+      // Save the answers to local storage, then call the onFinish callback
       localStorage.setItem("answers", JSON.stringify(updatedAnswers));
       onFinish(updatedAnswers);
     }
@@ -73,6 +79,7 @@ const Quiz = ({ onFinish }) => {
           Quiz
         </Typography>
         <Typography variant="h6" sx={{ mb: 2 }}>
+          {/* Display the current question */}
           {questions[currentQuestion].question}
         </Typography>
         <TextField
@@ -100,6 +107,7 @@ const Quiz = ({ onFinish }) => {
   );
 };
 
+// Define prop types for the Quiz component
 Quiz.propTypes = {
   onFinish: PropTypes.func.isRequired,
 };
